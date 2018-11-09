@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpForce = 8f;
     public float speed = 6f;
     Vector3 movement;
+    int jumpCount = 0;
 
     public bool isGrounded;
     Rigidbody2D rb;
@@ -28,8 +29,9 @@ public class PlayerMovement : MonoBehaviour {
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            jumpCount = 0;
         }
-        Debug.Log("Hit the 2d " + collision.gameObject.tag);
+        Debug.Log("collision jumpCount " + jumpCount);
     }
 
     // Update is called once per frame
@@ -48,13 +50,15 @@ public class PlayerMovement : MonoBehaviour {
         }
         
 
-        if (isGrounded && Input.GetKeyDown("space"))
+        if ((isGrounded && Input.GetKeyDown("space")) || jumpCount < 2 && Input.GetKeyDown("space"))
         {
+        	jumpCount++;
             if (Input.GetKey("d"))
                 rb.velocity = new Vector2(movement.x, jumpForce);
             else if (Input.GetKey("a"))
                 rb.velocity = new Vector2(-movement.x, jumpForce);
             else rb.velocity = new Vector2(0, jumpForce);
+            Debug.Log("update jumpcount " + jumpCount);
         }
 
     }
