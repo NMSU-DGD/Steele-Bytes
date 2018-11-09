@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public Vector2 jump;
-    public float jumpForce = 2.0f;
+    public float jumpForce = 8f;
+    public float speed = 6f;
+    Vector3 movement;
 
     public bool isGrounded;
     Rigidbody2D rb;
@@ -13,7 +12,6 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
-        jump = new Vector2(0.0f, 6.0f);
 	}
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -36,10 +34,28 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if(Input.GetKeyDown("space") && isGrounded)
-        {
-            rb.AddForce(jump, ForceMode2D.Impulse);
 
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+
+        movement = new Vector2(moveHorizontal, 0);
+        movement = movement * speed * Time.deltaTime;
+        if (isGrounded)
+        {
+            transform.position += movement;
+        } else
+        {
+            transform.position += movement/ 1.5f;
         }
-	}
+        
+
+        if (isGrounded && Input.GetKeyDown("space"))
+        {
+            if (Input.GetKey("d"))
+                rb.velocity = new Vector2(movement.x, jumpForce);
+            else if (Input.GetKey("a"))
+                rb.velocity = new Vector2(-movement.x, jumpForce);
+            else rb.velocity = new Vector2(0, jumpForce);
+        }
+
+    }
 }
