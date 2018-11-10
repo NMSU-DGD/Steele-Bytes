@@ -6,6 +6,7 @@ public class EnemyFollow : MonoBehaviour {
 
     public float speed;
     public float stoppingDistance;
+    private bool followPlayer = false;
     private Transform target;
 
 	// Use this for initialization
@@ -15,7 +16,7 @@ public class EnemyFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Vector2.Distance(transform.position, target.position) > stoppingDistance)
+        if(Vector2.Distance(transform.position, target.position) > stoppingDistance && followPlayer)
         {
             if (target.position.x > transform.position.x)
             {
@@ -36,4 +37,21 @@ public class EnemyFollow : MonoBehaviour {
     {
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            followPlayer = true;
+            Debug.Log("Follow Player is true");
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            followPlayer = false;
+            Debug.Log("Follow Player is false");
+        }
+    }
+
 }
