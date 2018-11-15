@@ -16,8 +16,8 @@ public class PlayerHealth : MonoBehaviour {
         if (collision.gameObject.tag == "EnemyMech")
         {
             health -= 10;
-        }
-        Debug.Log("Enemy hits player, health = " + health);
+            Debug.Log("Enemy hits player, health = " + health);
+        }        
     }
 
     // Update is called once per frame
