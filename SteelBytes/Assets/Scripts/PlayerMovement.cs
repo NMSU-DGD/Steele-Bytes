@@ -9,10 +9,12 @@ public class PlayerMovement : MonoBehaviour {
 
     public bool isGrounded;
     Rigidbody2D rb;
+    SpriteRenderer mySpriteRenderer;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -54,12 +56,46 @@ public class PlayerMovement : MonoBehaviour {
         {
         	jumpCount++;
             if (Input.GetKey("d"))
+            {
                 rb.velocity = new Vector2(movement.x, jumpForce);
+               
+            }
             else if (Input.GetKey("a"))
+            {
                 rb.velocity = new Vector2(-movement.x, jumpForce);
+                
+            }
             else rb.velocity = new Vector2(0, jumpForce);
             Debug.Log("update jumpcount " + jumpCount);
         }
 
+        
+        if (Input.GetKey(KeyCode.A))
+        {
+            //face left
+            mySpriteRenderer.flipX = false;
+            //set walking animation
+            GetComponent<Animator>().SetBool("isWalking", true);
+            
+        }
+        else if(Input.GetKey(KeyCode.D))
+        {
+            //face right
+            mySpriteRenderer.flipX = true;
+            //set walking animation
+            GetComponent<Animator>().SetBool("isWalking", true);
+
+        }
+        else
+        {
+            //set idle animation
+            GetComponent<Animator>().SetBool("isWalking", false);
+        }
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            //left mouse button is pressed play attack animation
+            GetComponent<Animator>().SetTrigger("attack");
+        }
     }
 }
