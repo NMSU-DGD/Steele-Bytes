@@ -8,10 +8,12 @@ public class PlayerHealth : MonoBehaviour {
 
     public Slider healthbar;
     public int health;
+    private float healthRegenTimer;
 
 	// Use this for initialization
 	void Start () {
         health = 100;
+        healthRegenTimer = 0;
 	}
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -29,5 +31,12 @@ public class PlayerHealth : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         healthbar.value = health;
+        if (health  < 100) {
+            healthRegenTimer += Time.deltaTime;
+            if (healthRegenTimer > 5) {
+                health += 5;
+                healthRegenTimer = 0;
+            }
+        }
 	}
 }
