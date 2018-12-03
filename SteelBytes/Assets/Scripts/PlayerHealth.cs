@@ -13,11 +13,15 @@ public class PlayerHealth : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EnemyMech")
+        if (collision.gameObject.tag == "FlameBall")
         {
             health -= 10;
-            Debug.Log("Enemy hits player, health = " + health);
-        }        
+            Debug.Log("FlameBall hits player, health = " + health);
+        }
+        if (health <= 0)
+        {
+            Debug.Log("Player is dead");
+        }
     }
 
     // Update is called once per frame

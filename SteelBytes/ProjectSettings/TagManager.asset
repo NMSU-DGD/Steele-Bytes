@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - EnemyMech
+  - BossMinion
+  - FlameBall
+  - Walls&Ceilings
   layers:
   - Default
   - TransparentFX

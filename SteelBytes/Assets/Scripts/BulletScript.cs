@@ -24,7 +24,9 @@ public class BulletScript : MonoBehaviour {
     {
         if (collision.gameObject.name.Equals("Player"))
         {
-            Debug.Log("hit!");
+            Debug.Log("hit the player!");
+            Destroy(gameObject);
+        } else if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Walls&Ceilings") {
             Destroy(gameObject);
         }
     }
