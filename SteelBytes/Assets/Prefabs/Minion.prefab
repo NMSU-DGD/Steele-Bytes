@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114330406025435410}
   - component: {fileID: 50841841874792622}
   - component: {fileID: 61241954128980934}
+  - component: {fileID: 114679586352273966}
   m_Layer: 0
   m_Name: Minion
   m_TagString: BossMinion
@@ -133,6 +134,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireball: {fileID: 1228858614082236, guid: ddc0347f6885bbc4c81d06c7be41a4ca, type: 2}
+--- !u!114 &114679586352273966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351388649557476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23d3f1fdac975b44a39fec07429cf82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
 --- !u!212 &212851116133171160
 SpriteRenderer:
   m_ObjectHideFlags: 1

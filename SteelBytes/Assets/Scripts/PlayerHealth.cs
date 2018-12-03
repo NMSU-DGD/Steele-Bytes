@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class PlayerHealth : MonoBehaviour {
         health = 100;
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "FlameBall")
         {
@@ -20,7 +21,8 @@ public class PlayerHealth : MonoBehaviour {
         }
         if (health <= 0)
         {
-            Debug.Log("Player is dead");
+        	Debug.Log("Player is dead");
+        	SceneManager.LoadScene("Assimilate1Scene");
         }
     }
 
