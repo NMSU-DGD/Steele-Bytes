@@ -11,18 +11,12 @@ public class EnemyHealth : MonoBehaviour {
         health = 20;
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Laser")
-        {
-            health -= 10;
-            Debug.Log("Laser hits enemy, health = " + health);
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Laser") {
+            health -= 5;
         }
-        if (health <= 0)
-        {
-            Debug.Log("enemy is dead");
-            DestroyImmediate(gameObject);
-
+        if (health <= 0) {
+            Destroy(gameObject);
         }
     }
 

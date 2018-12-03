@@ -39,11 +39,10 @@ public class PlayerAttacks : MonoBehaviour {
 
             if (heatTimer > .5) {
                 heat += 10;
-                Debug.Log("Heat is " + heat);
                 heatTimer = 0;
             }
 
-
+            //Laser start
             if (start == null) {
                 start = Instantiate(laserStart) as GameObject;
                 start.transform.parent = this.transform;
@@ -61,7 +60,6 @@ public class PlayerAttacks : MonoBehaviour {
             float maxLaserSize = 20f;
             float currentLaserSize = maxLaserSize;
 
-            // Raycast at the right as our sprite has been design for that
             Vector2 laserDirection = this.transform.right;
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, laserDirection, maxLaserSize);
 

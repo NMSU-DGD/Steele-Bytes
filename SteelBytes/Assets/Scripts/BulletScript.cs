@@ -22,9 +22,9 @@ public class BulletScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("Player"))
+        if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("hit the player!");
+            Debug.Log("hit the " + collision.gameObject.tag);
             Destroy(gameObject);
         } else if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Walls&Ceilings") {
             Destroy(gameObject);

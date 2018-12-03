@@ -12,17 +12,15 @@ public class PlayerHealth : MonoBehaviour {
         health = 100;
 	}
 
-    private void OnTriggerEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "FlameBall")
-        {
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "FlameBall") {
             health -= 10;
-            Debug.Log("FlameBall hits player, health = " + health);
+            Debug.Log("FlameBall hits " + this.tag + ", health = " + health);
+            Debug.Log("Child: " + this.tag);
         }
-        if (health <= 0)
-        {
-        	Debug.Log("Player is dead");
-        	SceneManager.LoadScene("Assimilate1Scene");
+        if (health <= 0) {
+            Debug.Log("Player is dead");
+            SceneManager.LoadScene("Assimilate1Scene");
         }
     }
 
