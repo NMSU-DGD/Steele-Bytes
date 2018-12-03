@@ -15341,7 +15341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1351388649557476, guid: 61d704af50cff4d46b71d50002f97353, type: 2}
-  spawnRate: 3
+  spawnRate: 5
 --- !u!61 &1626745345
 BoxCollider2D:
   m_ObjectHideFlags: 0

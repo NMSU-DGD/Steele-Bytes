@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        health = 20;
+       // health = 20;
 	}
 
     private void OnTriggerEnter2D(Collider2D collision) {

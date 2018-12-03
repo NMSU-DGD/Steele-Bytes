@@ -95,7 +95,7 @@ public class PlayerAttacks : MonoBehaviour {
             }
 
             // Define an "infinite" size, not too big but enough to go off screen
-            float maxLaserSize = 20f;
+            float maxLaserSize = 10f;
             float currentLaserSize = maxLaserSize;
 
             Vector2 laserDirection = this.transform.right;
@@ -147,6 +147,9 @@ public class PlayerAttacks : MonoBehaviour {
                 heat = 0;
             grenadeCooldown = false;
             grenadeTimer = 0;
+
+            //code for blue ring goes here
+            
         }
 
         if (!grenadeCooldown)
