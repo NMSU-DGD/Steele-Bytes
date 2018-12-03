@@ -107,6 +107,8 @@ public class PlayerAttacks : MonoBehaviour {
                 heat -= 50;
             else
                 heat = 0;
+            grenadeCooldown = false;
+            grenadeTimer = 0;
         }
 
         if (!grenadeCooldown)
