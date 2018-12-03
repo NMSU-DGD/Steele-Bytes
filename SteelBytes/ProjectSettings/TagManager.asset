@@ -10,6 +10,7 @@ TagManager:
   - FlameBall
   - Walls&Ceilings
   - Laser
+  - Mage
   layers:
   - Default
   - TransparentFX

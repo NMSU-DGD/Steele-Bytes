@@ -11,6 +11,13 @@ public class PlayerAttacks : MonoBehaviour {
     public int heat;
     Rigidbody2D player;
 
+    //for melee attacks
+    private bool attacking = false;
+    private float attackTimer = 0;
+    private float attackCoolDown = 0.3f;
+    public Collider2D attackTrigger;
+    private Animator anim;
+
     [Header("Laser pieces")]
     public GameObject laserStart;
     public GameObject laserMiddle;
@@ -31,11 +38,38 @@ public class PlayerAttacks : MonoBehaviour {
         heatTimer = 0;
         grenadeCooldown = true;
         grenadeTimer = 0;
+
+        anim = gameObject.GetComponent<Animator>();
+        attackTrigger.enabled = false;
+
     }
 
     void Update() {
 
         heatbar.value = heat;
+
+        //for melee attacks
+        if (Input.GetMouseButtonDown(0) && !attacking)
+        {
+            attacking = true;
+            attackTimer = attackCoolDown;
+            attackTrigger.enabled = true;
+        }
+
+        if (attacking)
+        {
+            if (attackTimer > 0)
+            {
+                attackTimer -= Time.deltaTime;
+            }
+            else
+            {
+                attacking = false;
+                attackTrigger.enabled = false;
+            }
+        }
+
+        anim.SetBool("attack", attacking);
 
         if (Input.GetKey(KeyCode.Mouse1) && heat < 100) {
             // Create the laser start from the prefab
