@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 808228102}
   - component: {fileID: 808228103}
   - component: {fileID: 808228104}
+  - component: {fileID: 808228105}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -310,7 +311,7 @@ Transform:
   m_Children:
   - {fileID: 115773568}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &808228100
 Rigidbody2D:
@@ -356,6 +357,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heat: 0
+  laserStart: {fileID: 1269955937852710, guid: e423bdb05c4a07e469c349b8dc51b7ea, type: 2}
+  laserMiddle: {fileID: 1326772760837398, guid: c279a77a0d92f1143938b7a3ecae2e17,
+    type: 2}
+  laserEnd: {fileID: 1424424154862336, guid: 9fa45fe5b03e3a24e871c79864fb8ee1, type: 2}
 --- !u!95 &808228103
 Animator:
   serializedVersion: 3
@@ -383,12 +388,27 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.53636366
+--- !u!114 &808228105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 808228095}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ff5a8acf4f3344fa37824c2dadff6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserStart: {fileID: 1269955937852710, guid: e423bdb05c4a07e469c349b8dc51b7ea, type: 2}
+  laserMiddle: {fileID: 1326772760837398, guid: c279a77a0d92f1143938b7a3ecae2e17,
+    type: 2}
+  laserEnd: {fileID: 1424424154862336, guid: 9fa45fe5b03e3a24e871c79864fb8ee1, type: 2}
 --- !u!1 &974733383
 GameObject:
   m_ObjectHideFlags: 0
@@ -14638,7 +14658,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4665753985684150, guid: 41dfbc8c80234be4db6496320d41c185, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41dfbc8c80234be4db6496320d41c185, type: 2}
@@ -14683,5 +14703,5 @@ Transform:
   - {fileID: 1606210317}
   - {fileID: 1234316070}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
