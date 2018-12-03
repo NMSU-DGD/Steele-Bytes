@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
 public class PlayerAttacks : MonoBehaviour {
 
+    public Slider heatbar; //for ui
     public int heat;
     Rigidbody2D player;
 
@@ -32,6 +34,8 @@ public class PlayerAttacks : MonoBehaviour {
     }
 
     void Update() {
+
+        heatbar.value = heat;
 
         if (Input.GetKey(KeyCode.Mouse1) && heat < 100) {
             // Create the laser start from the prefab

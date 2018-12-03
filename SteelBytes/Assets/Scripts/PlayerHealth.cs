@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
 
+    public Slider healthbar;
     public int health;
 
 	// Use this for initialization
@@ -13,8 +15,8 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "FlameBall") {
-            health -= 10;
+        if (collision.gameObject.tag == "FlameBall" || collision.gameObject.tag == "MageBullet") {
+            health = health - 10;
             Debug.Log("FlameBall hits " + this.tag + ", health = " + health);
             Debug.Log("Child: " + this.tag);
         }
@@ -26,6 +28,6 @@ public class PlayerHealth : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+        healthbar.value = health;
 	}
 }
