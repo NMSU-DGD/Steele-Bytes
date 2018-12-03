@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 
 
-public class PlayerAttacks : MonoBehaviour {
+public class PlayerAttacks : MonoBehaviour
+{
 
     public Slider heatbar; //for ui
     public int heat;
@@ -30,9 +31,11 @@ public class PlayerAttacks : MonoBehaviour {
     private bool grenadeCooldown;
     private float heatTimer;
     private float grenadeTimer;
+    private float heatReduceTimer;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         heat = 0;
         player = GetComponent<Rigidbody2D>();
         heatTimer = 0;
@@ -44,26 +47,23 @@ public class PlayerAttacks : MonoBehaviour {
 
     }
 
-    void Update() {
+    void Update()
+    {
 
         heatbar.value = heat;
+        heatReduceTimer += Time.deltaTime;
 
         //for melee attacks
-        if (Input.GetMouseButtonDown(0) && !attacking)
-        {
+        if (Input.GetMouseButtonDown(0) && !attacking) {
             attacking = true;
             attackTimer = attackCoolDown;
             attackTrigger.enabled = true;
         }
 
-        if (attacking)
-        {
-            if (attackTimer > 0)
-            {
+        if (attacking) {
+            if (attackTimer > 0) {
                 attackTimer -= Time.deltaTime;
-            }
-            else
-            {
+            } else {
                 attacking = false;
                 attackTrigger.enabled = false;
             }
@@ -71,12 +71,21 @@ public class PlayerAttacks : MonoBehaviour {
 
         anim.SetBool("attack", attacking);
 
+        if (heatReduceTimer > 4) {
+            if (heat > 10) {
+                heat -= 10;
+            } else {
+                heat = 0;
+            }
+            heatReduceTimer = 0;
+        }
+
         if (Input.GetKey(KeyCode.Mouse1) && heat < 100) {
             // Create the laser start from the prefab
             heatTimer += Time.deltaTime;
 
-            if (heatTimer > .5) {
-                heat += 10;
+            if (heatTimer > .1) {
+                heat += 2;
                 heatTimer = 0;
             }
 
@@ -149,7 +158,7 @@ public class PlayerAttacks : MonoBehaviour {
             grenadeTimer = 0;
 
             //code for blue ring goes here
-            
+
         }
 
         if (!grenadeCooldown)
