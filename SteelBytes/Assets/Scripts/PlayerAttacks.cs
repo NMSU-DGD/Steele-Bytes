@@ -34,6 +34,9 @@ public class PlayerAttacks : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+
+    	
+
     if(Input.GetMouseButtonDown(1) && heat <100){
 		// Create the laser start from the prefab
 

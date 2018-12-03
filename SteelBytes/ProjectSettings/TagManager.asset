@@ -9,6 +9,7 @@ TagManager:
   - BossMinion
   - FlameBall
   - Walls&Ceilings
+  - Laser
   layers:
   - Default
   - TransparentFX
